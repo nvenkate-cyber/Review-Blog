@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link rel ="stylesheet" href="Style.css">
+    </head>
+
+    <body>
+
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="topnav">
+                <a href="./Home.html"><img class="logo" src="../Logo192.png"></a>
+                <div class="topnav-right">
+                    <a href="./Home.html"> Home</a>
+                    <a href="./Browse.html"> Browse</a>
+                    <a class="active" href="./login.html"> Login</a>
+                    <a href="./Register.html"> Register</a>
+                    <input class="searchbar" type="text" placeholder="Search">
+                </div>
+            </div>
+        </nav>
+
+
+        <hr>
+        <!-- Login form -->
+
+        <div class="containercenter">
+            <h1>LOG IN</h1>
+            <form class="formcentered" action="/login" method = "POST">
+                <div class="formcentered">
+                    <label for="email">Email </label>
+                    <input type="email" name="email" id="email" placeholder="Type email"/>
+                </div>
+                
+                <div class="formcentered">
+                    <label for="password">Password </label>
+                    <input type="text" name="password" id="password" placeholder="Type password"/>
+                </div>
+                <input type="submit" value="send"/>
+            </form>
+        </div>
+
+        <!-- TODO footer  -->
+    </body>
+</html>
