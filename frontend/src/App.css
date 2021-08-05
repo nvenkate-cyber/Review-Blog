@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap');
+
 .App {
-  text-align: center;
+  margin-left: 80px;
+  background-color: #d6aa1a;
 }
 
 .App-logo {
@@ -14,14 +17,21 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+}
+
+.card {
+	display:flex;
+	margin-right: 2em;
+	text-align: center;
 }
 
 .App-link {
