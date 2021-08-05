@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import img from './img.svg';
 import React, {Component} from 'react'
 import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from '@material-ui/core';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/home';
 import Browse from './pages/browse';
 import Login from './pages/login';
 import Register from './pages/register';
@@ -45,7 +42,7 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route path='/home' exact component={Home} />
+        <Route path='/' />
         <Route path='/browse' component={Browse} />
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
