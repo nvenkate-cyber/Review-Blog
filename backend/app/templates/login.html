@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/main.css') }}"
+    />
+    </head>
+
+    <body>
+        <div class="containercenter">
+            <h1>LOG IN</h1>
+            <form class="formcentered" action="/login" method = "POST">
+                <div class="formcentered">
+                    <label for="username">User </label>
+                    <input type="text" name="username" id="username" placeholder="Type username"/>
+                </div>
+                
+                <div class="formcentered">
+                    <label for="password">Password </label>
+                    <input type="text" name="password" id="password" placeholder="Type password"/>
+                </div>
+                <input type="submit" value="send"/>
+            </form>
+        </div>
+        <div class="containercenter">
+            <h3>Not registered?</h3>
+            <a class="redirectionbutton" href="register.html">Sig up here!</a>
+        </div>
+
+    </body>
+</html>
