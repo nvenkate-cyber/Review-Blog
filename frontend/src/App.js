@@ -76,6 +76,43 @@ function App() {
           <Button size="small">Learn More</Button>
         </CardActions>
       </Card>
+
+      <div class="containercenter">
+            <h1>LOG IN</h1>
+            <form class="formcentered" action="/login" method = "POST">
+                <div class="formcentered">
+                    <label for="email">Email </label>
+                    <input type="email" name="email" id="email" placeholder="Type email"/>
+                </div>
+                
+                <div class="formcentered">
+                    <label for="password">Password </label>
+                    <input type="text" name="password" id="password" placeholder="Type password"/>
+                </div>
+                <input type="submit" value="login"/>
+            </form>
+        </div>
+
+        <div class="containercenter">
+            <h1>REGISTER</h1>
+            <form class="formcentered" action="/register" method = "POST">
+                <div class="formcentered">
+                    <label for="name">Name </label>
+                    <input type="name" name="name" id="name" placeholder="Type name"/>
+                </div>
+
+                <div class="formcentered">
+                    <label for="email">Email </label>
+                    <input type="email" name="email" id="email" placeholder="Type email"/>
+                </div>
+                
+                <div class="formcentered">
+                    <label for="password">Password </label>
+                    <input type="text" name="password" id="password" placeholder="Type password"/>
+                </div>
+                <input type="submit" value="register"/>
+            </form>
+        </div>
         
       </header>
     </div>
