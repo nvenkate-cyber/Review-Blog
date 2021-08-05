@@ -1,5 +1,8 @@
 # python files
-venv
+*venv
 __pycache__
 *.pyc
 *.env
+
+# MacOS
+*/.DS_Store
