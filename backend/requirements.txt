@@ -1,0 +1,15 @@
+alembic==1.6.5
+click==8.0.1
+Flask==2.0.1
+greenlet==1.1.0
+gunicorn==20.1.0
+itsdangerous==2.0.1
+Jinja2==3.0.1
+Mako==1.1.4
+MarkupSafe==2.0.1
+psycopg2-binary==2.9.1
+python-dateutil==2.8.1
+python-editor==1.0.4
+Werkzeug==2.0.1
+python-dotenv==0.17.1
+PyMongo==3.12.0
