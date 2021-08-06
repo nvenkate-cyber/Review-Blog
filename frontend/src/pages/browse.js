@@ -7,6 +7,7 @@ import {
     Typography,
     CardHeader
   } from "@material-ui/core/";
+  import './browse.css';
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,6 +33,7 @@ const Browse = () => {
 
     return (
         <div className={classes.root}>
+            <h1 className="Movies">Movies</h1>
       {data.id.map((elem) => (
         <Grid
           container

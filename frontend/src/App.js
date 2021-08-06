@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './App.css';
 import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,11 +11,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Review</h1>
-
-      <hr />
       <Review />
-      <hr />
     </div>
   );
 };
