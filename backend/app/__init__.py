@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
+import json
 
 
 from api.v1.consume_itunes import get_response
@@ -86,17 +87,19 @@ def login():
         else:
             return error, 418
 
-    return render_template("login.html", title="Login", url=os.getenv("URL"))
+    return render_template("login.html")
 
 
 @app.route("/search", methods=["POST", "GET"])
 def search():
     if request.method == "POST":
-        query = request.form["query"]
+        query = request.form["search"]
 
         ok, response = get_response(query=query)
 
-    return render_template("search.html", title="Login", url=os.getenv("URL"))
+        return json.dumps(response), 200
+
+    return render_template("search.html", title="Search", url=os.getenv("URL"))
 
 
 @app.route("/health")
