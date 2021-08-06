@@ -70,13 +70,12 @@ def login():
         error = None
         user = users.find_one({"Username": request.form["username"]})
 
-        username = request.form.get("username")
         password = request.form.get("password")
         error = None
 
         if user is None:
             error = "Incorrect username."
-        elif not check_password_hash(user.password, password):
+        elif not check_password_hash(user["Password"], password):
             error = "Incorrect password."
 
         if error is None:
