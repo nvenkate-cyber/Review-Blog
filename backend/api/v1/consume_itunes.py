@@ -1,4 +1,4 @@
-from request import get
+from requests import get
 from urllib.parse import urlencode
 
 
