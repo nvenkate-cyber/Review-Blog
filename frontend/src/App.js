@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Browse from './pages/browse';
 import Login from './pages/login';
 import Register from './pages/register';
+import { Form,FormControl } from 'react-bootstrap'
 
 const useStyles = makeStyles({
   root: {
@@ -38,16 +39,22 @@ function App() {
     <head>
       <title>Review Blog</title>
     </head>
-    
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route path='/' />
-        <Route path='/browse' component={Browse} />
-        <Route path='/login' component={Login} />
-        <Route path='/register' component={Register} />
-      </Switch>
-    </Router>
+    <div className="navbar">
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/' />
+          <Route path='/browse' component={Browse} />
+          <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
+        </Switch>
+      </Router>
+      
+      <Form inline className="searchBar">
+          <FormControl type="text" placeholder="Search" className="search" />
+          <Button variant="outline-success">Search</Button>
+      </Form>
+    </div>
 
     <div className="App">
       <header className="App-header">

@@ -46,3 +46,18 @@
     transform: rotate(360deg);
   }
 }
+
+.searchBar {
+  display: inline;
+  float: right;
+}
+
+.search {
+  border-radius: 25px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

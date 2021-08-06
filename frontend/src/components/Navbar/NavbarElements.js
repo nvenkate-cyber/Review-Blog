@@ -9,7 +9,7 @@ export const Nav = styled.nav`
   background: white;
   height: 85px;
   display: flex;
-  padding-left: 70%;
+  padding-left: 55%;
   justify-content: space-between;
   z-index: 12;
   /* Third Nav */
