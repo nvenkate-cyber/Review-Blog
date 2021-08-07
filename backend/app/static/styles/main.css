@@ -489,3 +489,14 @@ form input[type=submit], button{
     padding: 10px 20px;
     font-family: 'Segoe UI',Geneva;
 }
+
+
+.hero-background-img {
+  height: 100vh;
+  background-image: url("../img/music.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: 200px;
+
+}

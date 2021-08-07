@@ -15,15 +15,20 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    users = mongo.db.Users
-    users.insert(
-        {
-            # "Email": request.form["Email"],
-            "Email": 0,
-        }
-    )
-    return "yes"
-    # return render_template("Login.html", title="Home", url=os.getenv("URL"))
+    return render_template("index.html", title="Welcome", url=os.getenv("URL")), 200
+
+
+# @app.route("/")
+# def index():
+#     users = mongo.db.Users
+#     users.insert(
+#         {
+#             # "Email": request.form["Email"],
+#             "Email": 0,
+#         }
+#     )
+#     return "yes"
+#     # return render_template("Login.html", title="Home", url=os.getenv("URL"))
 
 
 @app.route("/browse")
@@ -90,14 +95,25 @@ def login():
 
 @app.route("/search", methods=["POST", "GET"])
 def search():
+    results = None
+    if request.method == "GET":
+        return render_template("search.html", title="Search", url=os.getenv("URL"))
+        
     if request.method == "POST":
         query = request.form["search"]
 
-        ok, response = get_response(query=query)
-
-        return json.dumps(response), 200
-
-    return render_template("search.html", title="Search", url=os.getenv("URL"))
+        response = get_response(query=query)
+        result = response['results']
+        for dict_item in result:
+            info_list = []
+            d = dict_item
+            # for key, value in d.items():
+            #     lst = [d['artistName'], d['artistViewUrl'], d['trackName'], d['primaryGenreName']]
+            #     info_list.append(lst)
+            # return info_list
+            return d
+        
+    return render_template("results.html", title="Results", url=os.getenv("URL"), info_list=info_list)
 
 
 @app.route("/health")

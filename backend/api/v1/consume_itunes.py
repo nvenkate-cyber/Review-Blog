@@ -74,9 +74,9 @@ def get_response(query=None, media='music', limit=200):
     if len(data['results']) == 0:
         return False, []
 
-    processed_data = map(
-            lambda x: extract_data(x, media=media), data['results'])
+    # processed_data = map(
+    #         lambda x: extract_data(x, media=media), data['results'])
 
-    processed_data = list(processed_data)
+    # processed_data = list(processed_data)
 
-    return True, processed_data
+    return data
