@@ -104,16 +104,17 @@ def search():
 
         response = get_response(query=query)
         result = response['results']
-        for dict_item in result:
-            info_list = []
-            d = dict_item
-            # for key, value in d.items():
-            #     lst = [d['artistName'], d['artistViewUrl'], d['trackName'], d['primaryGenreName']]
-            #     info_list.append(lst)
-            # return info_list
-            return d
+        # for dict_item in result:
+        #     info_list = []
+        #     d = dict_item
+        #     # for key, value in d.items():
+        #     #     lst = [d['artistName'], d['artistViewUrl'], d['trackName'], d['primaryGenreName']]
+        #     #     info_list.append(lst)
+        #     # return info_list
+        #     return d
+       
         
-    return render_template("results.html", title="Results", url=os.getenv("URL"))
+    return render_template("results.html", title="Results", url=os.getenv("URL"), result=result)
 
 
 @app.route("/health")

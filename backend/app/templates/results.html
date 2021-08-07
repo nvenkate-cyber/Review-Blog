@@ -3,20 +3,18 @@
 
 <h1>Results</h1>
 
-print(info_list)
 
-    <!-- <div class="container">
-        {% for i in info_list %}
-            {% for j in result_list%}
+
+    <div class="container">
+        {% for i in result %}
             <div class="card">
-                <img src="{{ [i][j][1] }}" class="card-img-top" alt="...">
+                <img src="{{ i['artworkUrl100'] }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">{{ i[0] }}</h5>
-                <p class="card-text">{{ i[2] }}</p>
-                <p class="card-text">{{ i[3] }}</p>
+                <h5 class="card-title">{{ i['artistName'] }}</h5>
+                <p class="card-text">{{ i['collectionName'] }}</p>
+                <p class="card-text">{{ i['primaryGenreName'] }}</p>
                 </div>
             </div>
-            {% endfor %}
-        {% endfor %} -->
+        {% endfor %}
     </div>
 {% include 'footer.html' %}
