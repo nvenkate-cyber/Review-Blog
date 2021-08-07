@@ -113,7 +113,7 @@ def search():
             # return info_list
             return d
         
-    return render_template("results.html", title="Results", url=os.getenv("URL"), info_list=info_list)
+    return render_template("results.html", title="Results", url=os.getenv("URL"))
 
 
 @app.route("/health")
