@@ -11,8 +11,9 @@
                 <img src="{{ i['artworkUrl100'] }}" class="card-img-top" alt="...">
                 <div class="card-body">
                 <h5 class="card-title">{{ i['artistName'] }}</h5>
-                <p class="card-text">{{ i['collectionName'] }}</p>
+                <p class="card-text">{{ i['trackName'] }}</p>
                 <p class="card-text">{{ i['primaryGenreName'] }}</p>
+                <a href="{{ i['collectionViewUrl']}}">Listen on Itunes</a>
                 </div>
             </div>
         {% endfor %}
