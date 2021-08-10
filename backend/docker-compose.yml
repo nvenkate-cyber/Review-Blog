@@ -11,7 +11,7 @@ services:
 
   nginx:
     image: jonasal/nginx-certbot:latest
-    restart:unless-stopped
+    restart: unless-stopped
     env_file: 
       - ./nginx-certbot.env
     ports:
