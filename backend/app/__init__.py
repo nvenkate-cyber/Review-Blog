@@ -18,26 +18,13 @@ def index():
     return render_template("index.html", title="Welcome", url=os.getenv("URL")), 200
 
 
-# @app.route("/")
-# def index():
-#     users = mongo.db.Users
-#     users.insert(
-#         {
-#             # "Email": request.form["Email"],
-#             "Email": 0,
-#         }
-#     )
-#     return "yes"
-#     # return render_template("Login.html", title="Home", url=os.getenv("URL"))
-
-
 @app.route("/browse")
-def contact():
+def browse():
     return render_template("Browse.html", title="Browse", url=os.getenv("URL"))
 
 
 @app.route("/review")
-def projects():
+def review():
     return render_template("Review.html", title="Review", url=os.getenv("URL"))
 
 
@@ -103,20 +90,18 @@ def search():
         query = request.form["search"]
 
         response = get_response(query=query)
+        if response is None:
+            return render_template("404.html", title="Error", url=os.getenv("URL"))
+      
         result = response['results']
-        # for dict_item in result:
-        #     info_list = []
-        #     d = dict_item
-        #     # for key, value in d.items():
-        #     #     lst = [d['artistName'], d['artistViewUrl'], d['trackName'], d['primaryGenreName']]
-        #     #     info_list.append(lst)
-        #     # return info_list
-        #     return d
        
-        
     return render_template("results.html", title="Results", url=os.getenv("URL"), result=result)
 
 
 @app.route("/health")
 def health():
-    return "it has health", 200
+    return "it has health"
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("404.html", title="Login"), 404
