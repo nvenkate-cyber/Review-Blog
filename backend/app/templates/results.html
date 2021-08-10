@@ -6,8 +6,9 @@
 
 
     <div class="container">
-        {% for i in result %}
-            <div class="card">
+        <div class=row>
+            {% for i in result %}
+            <div class="card" style="width: 18rem;">
                 <img src="{{ i['artworkUrl100'] }}" class="card-img-top" alt="...">
                 <div class="card-body">
                 <h5 class="card-title">{{ i['artistName'] }}</h5>
@@ -17,5 +18,6 @@
                 </div>
             </div>
         {% endfor %}
+        </div>
     </div>
 {% include 'footer.html' %}

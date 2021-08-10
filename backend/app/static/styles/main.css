@@ -15,7 +15,24 @@ html,body
 h1 {
   font-family: "Shippori Mincho", serif;
   font-size: 6rem;
-  color: #ffffff;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+}
+
+h1.error {
+  color: red;
+}
+
+img.card-img-top {
+  width: 100px;
+  height: 100px;
+}
+
+.card {
+  margin-right: 15px;
+  margin-top: 15px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 h3 {
