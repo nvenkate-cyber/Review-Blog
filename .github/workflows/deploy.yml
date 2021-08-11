@@ -33,3 +33,7 @@ jobs:
            
             - name: Deployment message
               run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
+              
+            - name: Deploy fail?
+              if: ${{ failure() }}
+              run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚨 Deployment Failed"
