@@ -3,7 +3,7 @@ services:
   web:
     build: .
     env_file:
-      .env
+      - .env
     volumes:
       - "/usercode/:/code"
 
@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
     command: mongod --auth
     env_file:
-      .env
+      - .env
     volumes:
       - mongodbdata:/data/db
     depends_on:
@@ -34,3 +34,4 @@ services:
 
 volumes:
   nginx_secrets:
+  mongodbdata:
