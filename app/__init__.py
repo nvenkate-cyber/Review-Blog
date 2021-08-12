@@ -8,7 +8,7 @@ from api.v1.consume_itunes import check_data_cache
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/Database"
+application.config["MONGO_URI"] = 'mongodb://' + os.environ['MONGODB_USERNAME'] + ':' + os.environ['MONGODB_PASSWORD'] + '@' + os.environ['MONGODB_HOSTNAME'] + ':27017/' + os.environ['MONGODB_DATABASE'] mongo = PyMongo(application) db = mongo.db
 mongo = PyMongo(app)
 
 
