@@ -1,23 +1,26 @@
 {% include 'header.html' %}
 {% include 'nav.html' %}
-    <body>
-        <div class="containercenter">
-            <h1>REGISTER</h1>
-            <form class="formcentered" action="/register" method = "POST">
-                <div class="formcentered">
-                    <label for="username">User </label>
-                    <input type="text" name="username" id="username" placeholder="Type username"/>
-                </div>
-                
-                <div class="formcentered">
-                    <label for="password">Password </label>
-                    <input type="text" name="password" id="password" placeholder="Type password"/>
-                </div>
-                <input type="submit" value="send"/>
-            </form>
-        </div>
-        <div class="containercenter">
-            <h3>Already registered?</h3>
-            <a class="redirectionbutton" href="register.html">Login!</a>
-        </div>
-{% include 'footer.html' %}
+
+<body>
+    <div class="loginimage"></div>
+    <div class="containercenter">
+        <h1>Register</h1>
+        <br><br><br><br>
+        <form class="formcentered" action="/register" method="POST">
+            <div class="formcentered">
+                <label for="username">Username </label>
+                <input type="text" name="username" id="username" placeholder="Type username" />
+            </div>
+            <br>
+            <div class="formcentered">
+                <label for="password">Password </label>
+                <input type="text" name="password" id="password" placeholder="Type password" />
+            </div>
+            <br>
+            <input type="submit" value="Create Account" class="register" />
+        </form>
+        <br><br><br>
+        <h6 class="notregistered">Already registered?</h6>
+        <a class="redirectionbutton" href="register.html">Login!</a>
+    </div>
+    {% include 'footer.html' %}

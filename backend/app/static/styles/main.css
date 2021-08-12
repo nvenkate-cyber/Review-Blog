@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap');
+
 html,body
 {
     width: 100%;
@@ -7,13 +9,13 @@ html,body
     overflow-x: hidden; 
 }
 
-
 * {
-  font-family: "Chivo", sans-serif;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
-  font-family: "Shippori Mincho", serif;
   font-size: 6rem;
   color: black;
   text-align: center;
@@ -36,14 +38,12 @@ img.card-img-top {
 }
 
 h3 {
-  font-family: "Chivo", sans-serif;
   font-size: 2.5rem;
   color: #ffd60a;
   font-weight: 100;
   letter-spacing: 0.15rem;
 }
 h5 {
-  font-family: "Shippori Mincho", serif;
   font-size: 3rem;
 }
 
@@ -71,7 +71,6 @@ h6 {
   margin-right: 170px;
   margin-top: 20px;
   margin-bottom: 20px;
-  font-family: "Shippori Mincho", serif;
   line-height: 4rem;
 }
 
@@ -140,7 +139,6 @@ h6 {
 }
 
 .job-title {
-  font-family: "Shippori Mincho", serif;
   font-size: 2rem;
   font-weight: 300;
 
@@ -196,7 +194,6 @@ h6 {
 
 .btn-black {
   border-radius: 0;
-  font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
   letter-spacing: 0.1rem;
   font-size: 1rem;
@@ -220,7 +217,6 @@ h6 {
 
 .btn-white {
   border-radius: 0;
-  font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
   letter-spacing: 0.1rem;
   font-size: 110%;
@@ -292,6 +288,10 @@ h6 {
 @media (min-width: 1200px) {
   .container {
     max-width: 1300px;
+    
+    position: absolute;
+    top: 15%;
+    left: 15%;
   }
 }
 
@@ -435,7 +435,6 @@ button,
   cursor: pointer;
 }
 input[type="text"],input[type="email"] {
-  font-family: "Chivo", serif;
   font-size: 20px;
   padding-top: 5px;
   width: 100%;
@@ -450,32 +449,39 @@ input[type="text"],input[type="email"] {
 .containercenter {
   display:flex ;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   align-items:  center;
-  color: black;
-  font-family: Arial;
+  color: white;
+
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 55%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 37%;
+  height: 85%;
+  padding: 20px;
+  text-align: center;
+  border-radius: 50px;
 }
 
 .containercenter h1{
-  font-size: 130px;
-  font-family: Arial;
-  font-style: italic;
-  padding-left: 16px;
-  padding-top: 150px;
-  color: white;
-  text-shadow: 2px 2px black;
+  font-size: 80px;
+  color: whitesmoke;
 }
 
 .redirectionbutton {
   color: whitesmoke;
-  background-clip: padding-box;
-  border-radius: 32px;
-  background: #00a1fe;
-  display: inline-block;
-  margin-top: 24px;
-  padding: 20px 30px;
-  /* font-family: 'Segoe UI',Geneva; */
   text-decoration: none;
+  display: inline;
+  page-break-after: avoid;
+  font-weight: 900;
+  font-size: 20px;
 }
 
 .formcentered {
@@ -486,34 +492,173 @@ input[type="text"],input[type="email"] {
 }
 .formcentered label {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 label{
-  font-size: 30px;
-  text-shadow: 2px 2px black;
+  font-size: 20px;
+  /*text-shadow: 2px 2px black;*/
   height: 20px;
   color: white;
   padding: 15px;
 }
-form input[type=submit], button{
+.register{
     color: white;
     border-radius: 32px;
-    background: #00a1fe;
+    background: #a7885a;
     display: inline-block;
     padding: 10px 20px;
-    font-family: 'Segoe UI',Geneva;
+    width: 125%;
+    height: 60px;
+}
+#username {
+  width: 120%;
+  height: 50px;
+  background-color: white;
+  border-radius: 30px;
 }
 
+#password {
+  width: 120%;
+  height: 50px;
+  background-color: white;
+  border-radius: 30px;
+}
+
+.notregistered {
+  color: white;
+  font-weight: light;
+  display: inline;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
 
 .hero-background-img {
-  height: 100vh;
+  height: 93.5%;
   background-image: url("../img/music.jpg");
+  
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   padding-top: 200px;
 
+  filter: blur(4px);
+  -webkit-filter: blur(8px);
+}
+
+.hero-js{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+@media (min-width: 992px){
+  .navbar li {
+      margin-left : 1em;
+      margin-right : 1em;
+  }
+  .navbar {
+    margin-left: 1em;
+  }
+  .navbar li:hover {
+    text-decoration: underline;
+  }
+}
+
+.loginimage {
+  height: 93.5%;
+  background-image: url("../img/library.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: 200px;
+
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}
+
+.searchimage {
+  height: 93.5%;
+  background-image: url("../img/search-1.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: 200px;
+
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}
+
+.resultsimage {
+  background-image: url("../img/result.jpeg");
+  
+  background-size: cover;
+  background-position: center;
+  padding-top: 200px;
+
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}
+
+.containersearch {
+  display:flex ;
+  flex-direction: column;
+  justify-content: left;
+  align-items:  center;
+  color: white;
+
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 37%;
+  height: 50%;
+  padding: 20px;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.formsearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.containersearch h1{
+  font-size: 80px;
+  color: whitesmoke;
+}
+
+.search {
+  color: white;
+  border-radius: 32px;
+  background: rgba(245, 245, 245, 0.616);
+  display: inline-block;
+  padding: 10px 20px;
+  width: 50%;
+  height: 60px;
+}
+
+#search {
+  width: 150%;
+  height: 50px;
+  background-color: white;
+  border-radius: 30px;
 }

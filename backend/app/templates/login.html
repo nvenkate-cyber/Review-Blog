@@ -1,25 +1,27 @@
 {% include 'header.html' %}
 {% include 'nav.html' %}
 
-    <body>
-        <div class="containercenter">
-            <h1>LOG IN</h1>
-            <form class="formcentered" action="/login" method = "POST">
-                <div class="formcentered">
-                    <label for="username">User </label>
-                    <input type="text" name="username" id="username" placeholder="Type username"/>
-                </div>
-                
-                <div class="formcentered">
-                    <label for="password">Password </label>
-                    <input type="text" name="password" id="password" placeholder="Type password"/>
-                </div>
-                <input type="submit" value="send"/>
-            </form>
-        </div>
-        <div class="containercenter">
-            <h3>Not registered?</h3>
-            <a class="redirectionbutton" href="register.html">Sig up here!</a>
-        </div>
-
+<body>
+    <div class="loginimage"></div>
+    <div class="containercenter">
+        <h1>Log In</h1>
+        <br><br><br><br>
+        <form class="formcentered" action="/login" method="POST">
+            <div class="formcentered">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Type username" />
+            </div>
+            <br>
+            <div class="formcentered">
+                <label for="password">Password </label>
+                <input type="text" name="password" id="password" placeholder="Type password" />
+            </div>
+            <br>
+            <input type="submit" value="Log In" class="register" />
+        </form>
+        <br><br><br>
+        <h6 class="notregistered">Not registered?</h6>
+        <a class="redirectionbutton" href="register.html">Sign up!</a>
+    </div>
+</body>
 {% include 'footer.html' %}
