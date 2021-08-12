@@ -2,7 +2,10 @@
 *venv
 __pycache__
 *.pyc
+*.env
 *.rdb
 
 # MacOS
-*/.DS_Store
+*.rdb
+*.DS_Store
+*.vscode
