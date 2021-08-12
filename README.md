@@ -67,7 +67,7 @@ fellowship was a 12 week remote program where participants gained practical skil
 * [AWS EC2](https://aws.amazon.com/ec2/)
 * [Docker](https://www.docker.com/)
 * [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [jQuery](https://jquery.com)
 * [Nginx](https://www.nginx.com/)
 * [iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)
 
