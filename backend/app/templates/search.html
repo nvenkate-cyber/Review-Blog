@@ -1,16 +1,17 @@
 {% include 'header.html' %}
 {% include 'nav.html' %}
 
-    <body>
-        <div class="containercenter">
-            <form class="formcentered" action="/search" method = "POST">
-                <div class="formcentered">
-                    <label for="search">Search </label>
-                    <input type="text" name="search" id="search" placeholder="Search for your music"/>
-                </div>
-                <input type="submit" value="send"/>
-            </form>
-        </div>
+<body>
+    <div class="searchimage"></div>
+    <div class="containersearch">
+        <h1>Search</h1>
+        <br><br><br>
+        <form class="formsearch" action="/search" method="POST">
+            <div class="formsearch">
+                <input type="text" name="search" id="search" placeholder="Search for your music/movie/podcast" />
+            </div>
+            <input type="submit" value="Search" class="search" />
+        </form>
+    </div>
 
-{% include 'footer.html' %}
-
+    {% include 'footer.html' %}
