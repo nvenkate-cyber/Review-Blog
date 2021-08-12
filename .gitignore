@@ -3,6 +3,7 @@
 __pycache__
 *.pyc
 *.env
+*.rdb
 
 # MacOS
 */.DS_Store
