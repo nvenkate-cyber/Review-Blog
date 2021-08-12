@@ -1,16 +1,16 @@
+
 import os
+import pickle
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
-import json
-
-
-from api.v1.consume_itunes import get_response
+from api.v1.consume_itunes import get_response, send_data_cache, get_data_cache, check_data_cache
 
 app = Flask(__name__)
 
 app.config["MONGO_URI"] = "mongodb://localhost:27017/Database"
 mongo = PyMongo(app)
+
 
 
 @app.route("/")
@@ -88,12 +88,11 @@ def search():
         
     if request.method == "POST":
         query = request.form["search"]
-
-        response = get_response(query=query)
+        response = check_data_cache(query)
+        result = response['results']
         if response is None:
             return render_template("404.html", title="Error", url=os.getenv("URL"))
-      
-        result = response['results']
+
        
     return render_template("results.html", title="Results", url=os.getenv("URL"), result=result)
 

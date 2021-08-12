@@ -1,5 +1,11 @@
 from requests import get
 from urllib.parse import urlencode
+from datetime import timedelta
+import os
+import redis
+import sys
+import pickle
+import codecs
 
 
 # in results field this are the ones that we a re gon to extract
@@ -8,21 +14,23 @@ from urllib.parse import urlencode
 #   - artworkUrl100
 #   - primaryGenreName
 
-def extract_data(result, media='music'):
-    if media == 'music':
-        data = {
-                'artist': result['artistName'],
-                'title': result['trackName'],
-                'artwork': result['artworkUrl100'],
-                'genre': result['primaryGenreName']
-                }
-    elif media == 'movie':
-        data = {}
-    elif media == 'podcast':
-        data = {}
-    else:
-        raise ValueError('cannot extrac ' + str(media) + ' media type')
-    return data
+def redis_connect() -> redis.client.Redis:
+    try:
+        client = redis.Redis(
+            host=os.getenv("HOST"),
+            port=6379,
+            db=0,
+            socket_timeout=5,
+        )
+        ping = client.ping()
+        if ping is True:
+            return client
+    except redis.AuthenticationError:
+        print("Authentication Error")
+        sys.exit(1)
+        
+client = redis_connect()
+
 
 def get_response(query=None, media='all', limit=50):
     """
@@ -54,3 +62,31 @@ def get_response(query=None, media='all', limit=50):
         return None
 
     return data
+
+def get_data_cache(key: str) -> str:
+    val = client.get(key)
+    return val
+
+
+def send_data_cache(key: str, value:str) -> bool:
+    state = client.setex(key, timedelta(seconds=86400), value=value,)
+    return state
+
+def check_data_cache(query):
+    data = get_data_cache(key=query)
+    if data is not None:
+       return data
+    
+    else:
+        data = get_response(query)
+        data = codecs.encode(pickle.dumps(data), "base64").decode()
+        state = send_data_cache(key=query, value=data)
+        
+        if state is True:
+            result = pickle.loads(codecs.decode(data.encode(), "base64"))
+        
+        return result
+        
+        
+        
+        
