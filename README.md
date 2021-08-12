@@ -81,7 +81,7 @@ This project creates a blog where a user can create an account to search for and
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* AWS account
+
 * Knowledge of Linux fundmentals
 * Knowledge of CLI
 
@@ -93,11 +93,8 @@ This is an example of how to list things you need to use the software and how to
    https://github.com/nvenkate-cyber/Review-Blog
    ```
 2. CD Backend
-   ```sh
-  cd backend
-   ```
+ 
 3. Install MongoDB and start mongod
-  https://docs.mongodb.com/manual/installation/
    ```sh
   mongod
    ```
