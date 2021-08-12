@@ -92,12 +92,10 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    https://github.com/nvenkate-cyber/Review-Blog
    ```
-2. CD Backend
+2. Change Directory to the Backend
  
 3. Install MongoDB and start mongod
-   ```sh
-  mongod
-   ```
+
 4. Install Redis
   https://redis.io/download
 
