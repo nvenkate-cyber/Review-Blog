@@ -4,7 +4,7 @@ import pickle
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
-from api.v1.consume_itunes import get_response, send_data_cache, get_data_cache, check_data_cache
+from api.v1.consume_itunes import check_data_cache
 
 app = Flask(__name__)
 
