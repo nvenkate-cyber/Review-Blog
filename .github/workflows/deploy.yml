@@ -20,7 +20,7 @@ jobs:
                 Host my-vm
                   HostName $SSH_IP
                   User $SSH_USER
-                  IdentifyFile ~/.ssh/deploy-key.pem
+                  IdentityFile ~/.ssh/deploy-key.pem
                   StrictHostKeyChecking no
                 END
               env:
@@ -28,5 +28,12 @@ jobs:
                 SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
                 SSH_IP: ${{ secrets.SSH_IP }}
 
-            - name: Print project root directory
-              run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && pwd'
+            - name: Deploy site
+              run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && git fetch && git reset --hard origin/main && docker-compose up -d --build'
+           
+            - name: Deployment message
+              run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
+              
+            - name: Deploy fail?
+              if: ${{ failure() }}
+              run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚨 Deployment Failed"
