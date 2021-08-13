@@ -5,9 +5,6 @@ COPY requirements.txt /myportfolio
 WORKDIR /myportfolio
 RUN pip3 install -r requirements.txt
 RUN pip3 install setuptools_rust
-RUN [“chmod”, “u+x”, “test.sh”]
-
-
 
 
 COPY . /myportfolio
