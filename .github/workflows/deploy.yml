@@ -32,7 +32,7 @@ jobs:
         run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && git fetch && git reset --hard origin/main && docker-compose stop && docker-compose up -d --build'
 
       - name: Test deployment
-        run: chmod u+x test.sh && bash prod-test.sh
+        run: ls && pwd && chmod u+x test.sh && bash prod-test.sh
 
       - name: Deployment message
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
