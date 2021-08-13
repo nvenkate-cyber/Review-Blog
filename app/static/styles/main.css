@@ -509,18 +509,18 @@ label{
     background: #a7885a;
     display: inline-block;
     padding: 10px 20px;
-    width: 125%;
+    width: 320px;
     height: 60px;
 }
 #username {
-  width: 120%;
+  width: 320px;
   height: 50px;
   background-color: white;
   border-radius: 30px;
 }
 
 #password {
-  width: 120%;
+  width: 320px;
   height: 50px;
   background-color: white;
   border-radius: 30px;
