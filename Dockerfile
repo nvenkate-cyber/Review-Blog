@@ -11,9 +11,4 @@ RUN [“chmod”, “u+x”, “test.sh”]
 
 
 COPY . /myportfolio
-# CMD ["gunicorn", "wsgi:app", "-w 4", "-b 0.0.0.0:80"]
-
-# CMD ["gunicorn", "wsgi:app", "-w 4", "-b 0.0.0.0:80"]
-
-RUN chmod u+x ./test.sh
-ENTRYPOINT ["sh", "./test.sh" ]
+CMD ["gunicorn", "wsgi:app", "-w 4", "-b 0.0.0.0:80"]
