@@ -1,6 +1,5 @@
 
 import os
-import pickle
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
@@ -8,7 +7,17 @@ from api.v1.consume_itunes import check_data_cache
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = 'mongodb://' + os.environ['MONGODB_USERNAME'] + ':' + os.environ['MONGODB_PASSWORD'] + '@' + os.environ['MONGODB_HOSTNAME'] + ':27017/' + os.environ['MONGODB_DATABASE']
+app.config[
+    "MONGO_URI"
+] = "mongodb://{username}:{passwd}@{host}:{port}/{database}".format(
+    username=os.getenv('MONGODB_USERNAME'),
+    passwd=os.getenv("MONGODB_PASSWORD"),
+    host=os.getenv("MONGODB_HOSTNAME"),
+    port=27017,
+    database=os.getenv("MONGODB_DATABASE"),
+)
+# app.config["MONGO_URI"] = 'mongodb://' + os.getenv['MONGODB_USERNAME'] + ':' + os.getenv['MONGODB_PASSWORD'] + 
+# '@' + os.getenv['MONGODB_HOSTNAME'] + ':27017/' + os.getenv['MONGODB_DATABASE']
 mongo = PyMongo(app)
 db = mongo.db
 
