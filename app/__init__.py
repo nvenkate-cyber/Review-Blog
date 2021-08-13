@@ -9,15 +9,16 @@ app = Flask(__name__)
 
 app.config[
     "MONGO_URI"
-] = "mongodb://{username}:{passwd}@{host}:{port}/{database}".format(
+] = "mongodb://{username}:{passwd}@{hostname}:{port}/{database}?authSource=admin".format(
     username=os.getenv('MONGODB_USERNAME'),
     passwd=os.getenv("MONGODB_PASSWORD"),
-    host=os.getenv("MONGODB_HOSTNAME"),
+    hostname=os.getenv("MONGODB_HOSTNAME"),
     port=27017,
     database=os.getenv("MONGODB_DATABASE"),
+    authSource="admin"
 )
-# app.config["MONGO_URI"] = 'mongodb://' + os.getenv['MONGODB_USERNAME'] + ':' + os.getenv['MONGODB_PASSWORD'] + 
-# '@' + os.getenv['MONGODB_HOSTNAME'] + ':27017/' + os.getenv['MONGODB_DATABASE']
+
+host = os.environ.get('MONGODB_URI' or 'mongodb://localhost:27017/blog')
 mongo = PyMongo(app)
 db = mongo.db
 
