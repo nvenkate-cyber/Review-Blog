@@ -31,6 +31,11 @@ jobs:
       - name: Deploy site
         run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && git fetch && git reset --hard origin/main && docker-compose stop && docker-compose down && docker-compose up -d --build'
 
+      - name: Checkout files
+        uses: actions/checkout@v2
+
+      - name: Bash test
+        run: bash test.sh
 
       - name: Deployment message
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
