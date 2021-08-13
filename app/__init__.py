@@ -7,6 +7,8 @@ from api.v1.consume_itunes import check_data_cache
 
 app = Flask(__name__)
 
+base_url = os.getenv("URL")
+
 app.config[
     "MONGO_URI"
 ] = "mongodb://{username}:{passwd}@{hostname}:{port}/{database}?authSource=admin".format(
@@ -60,7 +62,7 @@ def register():
                     "Password": hashpass,
                 }
             )
-            return redirect(url_for("login"))
+            return redirect(url_for(base_url + "login"))
         # Existing user was not none
         return "That username already exists!"
 
