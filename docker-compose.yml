@@ -33,6 +33,15 @@ services:
     depends_on:
       - web
 
+  redis:
+    image: redis:alpine
+    restart: always
+    env_file: 
+      - ./env
+    volumes:
+      - .redis_data:/data
+
 volumes:
   nginx_secrets:
   mongodbdata:
+  redis_data:
