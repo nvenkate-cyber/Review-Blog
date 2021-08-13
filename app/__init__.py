@@ -62,7 +62,7 @@ def register():
                     "Password": hashpass,
                 }
             )
-            return "Registration Successful", 200
+            return render_template("success.html")
         # Existing user was not none
         return "That username already exists!"
 
