@@ -62,7 +62,7 @@ def register():
                     "Password": hashpass,
                 }
             )
-            return redirect(url_for(base_url + "/login"))
+            return "Registration Successful", 200
         # Existing user was not none
         return "That username already exists!"
 
