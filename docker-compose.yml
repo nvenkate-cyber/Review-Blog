@@ -2,6 +2,7 @@ version: '3'
 services:
   web:
     build: .
+    restart: always
     env_file:
       - .env
     volumes:
@@ -9,7 +10,7 @@ services:
 
   database:
     image: mongo:latest
-    restart: unless-stopped
+    restart: always
     command: mongod --auth
     env_file:
       - .env
