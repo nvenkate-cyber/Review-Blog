@@ -17,7 +17,7 @@ import codecs
 def redis_connect() -> redis.client.Redis:
     try:
         client = redis.Redis(
-            host="localhost",
+            host=os.getenv('HOST'),
             port=6379,
             db=0,
             socket_timeout=5,
