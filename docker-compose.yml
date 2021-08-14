@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    container_name: web
     build: .
     restart: always
     env_file:
@@ -9,6 +10,7 @@ services:
       - "/usercode/:/code"
 
   database:
+    container_name: db
     image: mongo:latest
     restart: always
     command: mongod --auth
@@ -20,6 +22,7 @@ services:
       - web
 
   nginx:
+    container_name: nginx
     image: jonasal/nginx-certbot:latest
     restart: unless-stopped
     env_file:
@@ -34,6 +37,7 @@ services:
       - web
 
   redis:
+    container_name: redis
     image: redis:alpine
     restart: always
     env_file: 
