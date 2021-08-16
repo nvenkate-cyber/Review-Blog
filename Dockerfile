@@ -8,4 +8,6 @@ RUN pip3 install setuptools_rust
 
 
 COPY . /myportfolio
-CMD ["gunicorn", "wsgi:app", "-w 4", "-b 0.0.0.0:80"]
+# CMD ["gunicorn", "wsgi:app", "-w 4", "-b 0.0.0.0:80"]
+RUN chmod u+x ./entrypoint.sh
+ENTRYPOINT ["sh", "./entrypoint.sh" ]

@@ -1,11 +1,12 @@
 from requests import get
 from urllib.parse import urlencode
 from datetime import timedelta
-import os
-import redis
-import sys
-import pickle
-import codecs
+# import os
+# import redis
+# import json
+# import sys
+# import pickle
+# import codecs
 
 
 # in results field this are the ones that we a re gon to extract
@@ -14,22 +15,22 @@ import codecs
 #   - artworkUrl100
 #   - primaryGenreName
 
-def redis_connect() -> redis.client.Redis:
-    try:
-        client = redis.Redis(
-            host=os.getenv('HOST'),
-            port=6379,
-            db=0,
-            socket_timeout=5,
-        )
-        ping = client.ping()
-        if ping is True:
-            return client
-    except redis.AuthenticationError:
-        print("Authentication Error")
-        sys.exit(1)
+# def redis_connect() -> redis.client.Redis:
+#     try:
+#         client = redis.Redis(
+#             host=os.getenv('HOST'),
+#             port=6379,
+#             db=0,
+#             socket_timeout=5,
+#         )
+#         ping = client.ping()
+#         if ping is True:
+#             return client
+#     except redis.AuthenticationError:
+#         print("Authentication Error")
+#         sys.exit(1)
         
-client = redis_connect()
+# client = redis_connect()
 
 
 def get_response(query=None, media='all', limit=50):
@@ -63,29 +64,42 @@ def get_response(query=None, media='all', limit=50):
 
     return data
 
-def get_data_cache(key: str) -> str:
-    val = client.get(key)
-    return val
+# def get_data_cache(key: str) -> str:
+#     val = client.get(key)
+#     return val
 
 
-def send_data_cache(key: str, value:str) -> bool:
-    state = client.setex(key, timedelta(seconds=86400), value=value,)
-    return state
+# def send_data_cache(key: str, value:str) -> bool:
+#     state = client.setex(key, timedelta(seconds=86400), value=value,)
+#     return state
 
-def check_data_cache(query):
-    data = get_data_cache(key=query)
-    if data is not None:
-       return data
+# # def check_data_cache(query):
+#     data = get_data_cache(key=query)
+#     # if data is None:
+#     #     return None
+#     return data
+    # if data is not None:
+    #     # data = json.loads(data)
+    #     # print(data)
+    #     data["cache"] = True
+    #     print(data)
     
-    else:
-        data = get_response(query)
-        data = codecs.encode(pickle.dumps(data), "base64").decode()
-        state = send_data_cache(key=query, value=data)
+    # else:
+    #     data = get_response(query)
+    # #     if data.get("code") == "Ok":
+    # #         data["cache"] = False
+    #     new_data = json.dumps(data)
+    #     state = send_data_cache(key=query, value=new_data)
+            
+              
+    #         # state = send_data_cache(key=query, value=data)
+    #         data = codecs.encode(pickle.dumps(data), "base64").decode()
+    #         state = send_data_cache(key=query, value=data)
         
-        if state is True:
-            result = pickle.loads(codecs.decode(data.encode(), "base64"))
+    #     if state is True:
+    #         result = pickle.loads(codecs.decode(data.encode(), "base64"))
         
-        return result
+    #     print(result)
         
         
         

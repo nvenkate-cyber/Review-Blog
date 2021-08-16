@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    container_name: web
     build: .
     restart: always
     env_file:
@@ -9,6 +10,7 @@ services:
       - "/usercode/:/code"
 
   database:
+    container_name: db
     image: mongo:latest
     restart: always
     command: mongod --auth
@@ -20,6 +22,7 @@ services:
       - web
 
   nginx:
+    container_name: nginx
     image: jonasal/nginx-certbot:latest
     restart: unless-stopped
     env_file:
@@ -33,15 +36,28 @@ services:
     depends_on:
       - web
 
-  redis:
-    image: redis:alpine
-    restart: always
-    env_file: 
-      - .env
-    volumes:
-      - .redis_data:/data
+  # redis:
+  #   container_name: redis
+  #   image: redis:alpine
+  #   restart: always
+  #   env_file: 
+  #     - .env
+  #   volumes:
+  #     - .redis_data:/data
+      
+  cadvisor:
+    container_name: cadvisor
+    image: gcr.io/cadvisor/cadvisor:latest
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    volumes: 
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
 
 volumes:
   nginx_secrets:
   mongodbdata:
-  redis_data:
+  # redis_data:
