@@ -1,0 +1,11 @@
+{% include 'header.html' %}
+{% include 'nav.html' %}
+
+<h1>Playlists</h1>
+
+<a href='/playlists/new'>New Playlist</a>
+
+{% for playlist in playlists %}
+        <h2>{{ playlist.title }}</h2>
+        <small>{{ playlist.description }}</small>
+    {% endfor %}

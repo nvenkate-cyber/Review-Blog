@@ -1,0 +1,22 @@
+{% include 'header.html' %}
+{% include 'nav.html' %}
+
+<form method='POST' action='/playlists'>
+    <fieldset>
+    <legend>New Playlist</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='title'>Title</label><br>
+        <input type='text' name='title' />
+    </p>
+    <p>
+        <label for='description'>Description</label><br>
+        <input type='text' name='description' />
+    </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Playlist</button>
+    </p>
+</form>
