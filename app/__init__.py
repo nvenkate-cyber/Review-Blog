@@ -63,7 +63,7 @@ def register():
                     "Password": hashpass,
                 }
             )
-            return render_template("search.html")
+            return render_template("success.html")
         # Existing user was not none
         return "That username already exists!"
 
@@ -86,7 +86,7 @@ def login():
             error = "Incorrect password."
 
         if error is None:
-            return render_template("search.html")
+            return render_template("success.html")
         else:
             return error, 418
 
