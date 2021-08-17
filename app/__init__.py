@@ -117,10 +117,10 @@ def search():
         query = request.form["search"]
         response = check_cache(query)
         if response is None:
-            return redirect(url_for("server_error")) 
+            return render_template('error.html', title="Error")
         result = response['results']
         if result is None:
-            return redirect(url_for("server_error"))
+            return render_template('error.html', title="Error")
 
        
     return render_template("results.html", title="Results", url=os.getenv("URL"), result=result)
@@ -144,4 +144,4 @@ def page_not_found(error):
 @app.errorhandler(500)
 def server_error(error):
     # note that we set the 404 status explicitly
-    return render_template('500.html', title="Error")
+    return render_template('error.html', title="Error")
