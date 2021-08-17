@@ -1,13 +1,17 @@
 
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
-from api.v1.consume_itunes import check_cache, get_response
+from api.v1.consume_itunes import check_cache
+from datetime import timedelta
 
 app = Flask(__name__)
 
 base_url = os.getenv("URL")
+
+SECRET_KEY = os.urandom(32)
+app.config["SECRET_KEY"] = SECRET_KEY
 
 app.config[
     "MONGO_URI"
@@ -62,6 +66,7 @@ def register():
                     "Password": hashpass,
                 }
             )
+            
             return render_template("search.html")
         # Existing user was not none
         return "That username already exists!"
@@ -72,6 +77,7 @@ def register():
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
+        session.permanent = True
         users = mongo.db.Users
         error = None
         user = users.find_one({"Username": request.form["username"]})
@@ -85,11 +91,20 @@ def login():
             error = "Incorrect password."
 
         if error is None:
+            session["user"] = user
             return render_template("search.html")
         else:
             return error, 418
 
     return render_template("login.html")
+
+@app.route("/profile")
+def profile():
+    if "user" in session:
+        user = session["user"]
+        return render_template("profile.html", title="Profile", url=os.getenv("URL"), user=user)
+    else:
+      return redirect(url_for("login"))  
 
 
 @app.route("/search", methods=["POST", "GET"])
@@ -109,14 +124,13 @@ def search():
     return render_template("results.html", title="Results", url=os.getenv("URL"), result=result)
 
 
-@app.route("/save", methods=["GET", "POST"])
-def save():    
+@app.route("/playlist", methods=["GET", "POST"])
+def create_playlist():    
     if request.method == "POST":
         resource_id = request.form["playlist"]
         print(resource_id)
         
-        
-
+    
 @app.route("/health")
 def health():
     return "it has health"
