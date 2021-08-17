@@ -77,9 +77,12 @@ def check_cache(query):
     
     else:
         data = get_response(query)
-        data["cache"] = False
-        data = json.dumps(data)
-        state = send_data_cache(query, data)
+        if data is None:
+            return None
+        else:
+            data["cache"] = False
+            data = json.dumps(data)
+            state = send_data_cache(query, data)
             
         if state is True:
             return json.loads(data)
