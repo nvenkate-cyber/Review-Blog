@@ -101,9 +101,8 @@ def search():
     if request.method == "POST":
         query = request.form["search"]
         response = check_cache(query)
-        # response = get_response(query)
         result = response['results']
-        if response is None:
+        if result is None:
             return render_template("404.html", title="Error", url=os.getenv("URL"))
 
        
