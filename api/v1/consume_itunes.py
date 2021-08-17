@@ -61,11 +61,15 @@ def get_response(query=None, media='all', limit=50):
 
 def get_data_cache(query):
     val = client.get(query)
+    if val is None:
+        return None
     return val
 
 
 def send_data_cache(query, data):
     state = client.setex(query, timedelta(seconds=86400), data,)
+    if state is None:
+        return None
     return state
 
 def check_cache(query):
