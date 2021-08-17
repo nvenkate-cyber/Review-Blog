@@ -57,7 +57,39 @@ def get_response(query=None, media='all', limit=50):
 
     return data
 
+# def playlist_cache(username):
+#     val = client.get(username)
+#     if val is None:
+#         return None
+#     return val
 
+# def send_user_cache(username, resource_id):
+#     playlist = []
+#     playlist.append(resource_id)
+#     state = client.setex(username, timedelta(seconds=86400), playlist,)
+#     if state is None:
+#         return None
+#     return state
+
+# def check_cache(query):
+#     data = get_data_cache(query)
+#     if data is not None:
+#         data = json.loads(data)
+#         data["cache"] = True
+#         return data
+    
+#     else:
+#         data = get_response(query)
+#         if data is None:
+#             return None
+#         else:
+#             data["cache"] = False
+#             data = json.dumps(data)
+#             state = send_data_cache(query, data)
+            
+#         if state is True:
+#             return json.loads(data)
+#     return data
 
 def get_data_cache(query):
     val = client.get(query)
@@ -71,6 +103,8 @@ def send_data_cache(query, data):
     if state is None:
         return None
     return state
+
+
 
 def check_cache(query):
     data = get_data_cache(query)

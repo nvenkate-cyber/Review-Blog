@@ -80,10 +80,7 @@ This project creates a blog where a user can create an account to search for and
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
-* Knowledge of Linux fundmentals
-* Knowledge of CLI
+Refer to docs for install instructions
 
 
 ### Local Installation
