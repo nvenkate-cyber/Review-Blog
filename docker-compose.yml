@@ -36,14 +36,14 @@ services:
     depends_on:
       - web
 
-  # redis:
-  #   container_name: redis
-  #   image: redis:alpine
-  #   restart: always
-  #   env_file: 
-  #     - .env
-  #   volumes:
-  #     - .redis_data:/data
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: always
+    env_file: 
+      - .env
+    volumes:
+      - .redis_data:/data
       
   cadvisor:
     container_name: cadvisor
@@ -60,4 +60,4 @@ services:
 volumes:
   nginx_secrets:
   mongodbdata:
-  # redis_data:
+  redis_data:
