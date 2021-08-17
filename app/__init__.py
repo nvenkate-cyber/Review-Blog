@@ -3,7 +3,7 @@ import os
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
-from api.v1.consume_itunes import get_response
+from api.v1.consume_itunes import check_cache, get_response
 
 app = Flask(__name__)
 
@@ -23,7 +23,6 @@ app.config[
 host = os.environ.get('MONGODB_URI' or 'mongodb://localhost:27017/blog')
 mongo = PyMongo(app)
 db = mongo.db
-
 
 
 @app.route("/")
@@ -101,8 +100,8 @@ def search():
         
     if request.method == "POST":
         query = request.form["search"]
-        # response = check_data_cache(query)
-        response = get_response(query)
+        response = check_cache(query)
+        # response = get_response(query)
         result = response['results']
         if response is None:
             return render_template("404.html", title="Error", url=os.getenv("URL"))
@@ -110,16 +109,14 @@ def search():
        
     return render_template("results.html", title="Results", url=os.getenv("URL"), result=result)
 
-# @app.route('/playlists')
-# def playlists_index():
-#     """Show all playlists."""
-#     return render_template('playlists_index.html', playlists=playlists)
 
-# @app.route('/playlists/new')
-# def playlists_new():
-#     """Create a new playlist."""
-#     return render_template('playlists_new.html')
-
+@app.route("/save", methods=["GET", "POST"])
+def save():    
+    if request.method == "POST":
+        resource_id = request.form["playlist"]
+        print(resource_id)
+        
+        
 
 @app.route("/health")
 def health():

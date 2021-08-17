@@ -9,17 +9,16 @@
         {% for i in result %}
         <div class="card" style="width: 18rem;">
             <img src="{{ i['artworkUrl100'] }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ i['trackName'] }}</h5>
-                <p class="card-text">{{ i['artistName'] }}</p>
-                <p class="card-text">{{ i['primaryGenreName'] }}</p>
-                <p class="card-text">{{ i['contentAdvisoryRating'] }}</p>
-                <p class="card-text">{{ i['shortDescription'] }}</p>
+                <h5  name="trackname" class="card-title">{{ i['trackName'] }}</h5>
+                <p name="artistname" class="card-text">{{ i['artistName'] }}</p>
+                <p name="primarygenre" class="card-text">{{ i['primaryGenreName'] }}</p>
+                <p name="contentrating" class="card-text">{{ i['contentAdvisoryRating'] }}</p>
+                <p name="desription" class="card-text">{{ i['shortDescription'] }}</p>
                 <a href="{{ i['collectionViewUrl']}}">Listen on Itunes</a>
+                <form action="/save" method="post">
+                    <button name="playlist" type="submit" value="{{i['collectionId']}}">Add to Playlist</button>
+                </form>
             </div>
-            <form action="" method="post">
-                <button name="playlist" type="submit" value="{{i['collectionId']}}">Add to Playlist</button>
-            </form>
         </div>
         {% endfor %}
     </div>
