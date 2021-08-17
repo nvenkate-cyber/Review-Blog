@@ -98,13 +98,13 @@ def login():
 
     return render_template("login.html")
 
-@app.route("/profile")
-def profile():
-    if "user" in session:
-        user = session["user"]
-        return render_template("profile.html", title="Profile", url=os.getenv("URL"), user=user)
-    else:
-      return redirect(url_for("login"))  
+# @app.route("/profile")
+# def profile():
+#     if "user" in session:
+#         user = session["user"]
+#         return render_template("profile.html", title="Profile", url=os.getenv("URL"), user=user)
+#     else:
+#       return redirect(url_for("login"))  
 
 
 @app.route("/search", methods=["POST", "GET"])
@@ -116,9 +116,11 @@ def search():
     if request.method == "POST":
         query = request.form["search"]
         response = check_cache(query)
+        if response is None:
+            return redirect(url_for("server_error")) 
         result = response['results']
         if result is None:
-            return render_template("404.html", title="Error", url=os.getenv("URL"))
+            return redirect(url_for("server_error"))
 
        
     return render_template("results.html", title="Results", url=os.getenv("URL"), result=result)
@@ -137,4 +139,9 @@ def health():
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template("404.html", title="Login")
+    return render_template("404.html", title="Error")
+
+@app.errorhandler(500)
+def server_error(error):
+    # note that we set the 404 status explicitly
+    return render_template('500.html', title="Error")

@@ -15,7 +15,7 @@
                 <p name="contentrating" class="card-text">{{ i['contentAdvisoryRating'] }}</p>
                 <p name="desription" class="card-text">{{ i['shortDescription'] }}</p>
                 <a href="{{ i['collectionViewUrl']}}">Listen on Itunes</a>
-                <form action="/save" method="post">
+                <form action="/playlist" method="post">
                     <button name="playlist" type="submit" value="{{i['collectionId']}}">Add to Playlist</button>
                 </form>
             </div>
